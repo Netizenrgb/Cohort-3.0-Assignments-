@@ -1,0 +1,175 @@
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #FDF3C8;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+  
+    .page {
+      display: flex;
+      height: 100vh;
+    }
+
+    .left-panel {
+      width: 55%;
+      background-color: #FFC300;
+      padding: 36px 48px 36px 52px;
+      position: relative;      
+      overflow: hidden;          
+    }
+
+    .logo img {
+      width: 150px;
+    }
+
+   
+    .hamburger {
+      position: absolute;
+      top: 36px;
+      right: 40px;
+      cursor: pointer;
+    }
+
+ 
+    .hamburger div {
+      width: 30px;
+      height: 3px;
+      background-color: #111111;
+      border-radius: 2px;
+      margin-bottom: 6px;
+    }
+
+  
+    .pokeball-bg {
+      position: absolute;
+      bottom: -60px;
+      left: -40px;
+      width: 320px;
+      height: 320px;
+      opacity: 0.15;          
+    }
+
+   
+    .content {
+      margin-top: 60px;
+    }
+
+ 
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #111111;
+      opacity: 0.65;
+      margin-bottom: 10px;
+    }
+
+   
+    .title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 100px;
+      line-height: 0.95;
+      color: #111111;
+      letter-spacing: -1px;
+      margin-bottom: 22px;
+    }
+
+  
+    .type-badge {
+      display: inline-block;
+      background-color: #111111;
+      color: #FFC300;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;    
+      margin-bottom: 16px;
+    }
+    .description {
+      font-size: 0.97rem;
+      line-height: 1.65;
+      color: #333333;
+      max-width: 360px;
+      margin-bottom: 36px;
+    }
+
+
+    .counter {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #111111;
+    }
+
+
+    .counter-line {
+      width: 40px;
+      height: 2px;
+      background-color: #111111;
+    }
+
+
+    .right-panel {
+      width: 45%;
+      background-color: #FDF3C8;
+      position: relative;      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+   
+    .pikachu-wrap {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-80%);   
+      width: 620px;
+    }
+
+
+    .pikachu-wrap img {
+      width: 100%;
+    }
+
+  
+    .dots {
+      position: absolute;
+      right: 28px;
+      top: 50%;
+      transform: translateY(-50%);   
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;             
+      background-color: #C89000;
+      opacity: 0.35;
+      cursor: pointer;
+    }
+
+
+    .dot.active {
+      opacity: 1;
+      background-color: #111111;
+      transform: scale(1.3);
+    }

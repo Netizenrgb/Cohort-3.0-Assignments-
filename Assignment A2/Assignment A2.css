@@ -1,0 +1,197 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    /* overflow: hidden; */
+}
+
+main {
+    height: auto;
+    width: 100%;
+}
+
+
+nav{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0;
+}
+
+nav img{
+    width: 20%;  
+    max-width: 80%;
+    height: auto;
+    display: block;
+}
+
+
+/* drinks  */
+
+.drinks{
+    height: auto;
+    width: 100%;
+    padding-top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    gap: 5%;
+}
+
+#drink1{
+    width: 25%;
+    border-radius: 20px;
+}
+
+#drink1 img{
+    width: 100%;
+}
+
+#drink1 p{
+    text-align: center;
+}
+
+/* drink 2 */
+
+#drink2{
+    width: 25%;
+    border-radius: 20px;
+}
+
+#drink2 img{
+    width: 100%;
+}
+
+#drink2 p{
+    text-align: center;
+}
+
+/* drink 3 */
+
+#drink3{
+    width: 25%;
+    border-radius: 20px;
+}
+
+#drink3 img{
+    width: 100%;
+}
+
+#drink3 p{
+    text-align: center;
+}
+
+/* drink 4 */
+
+#drink4{
+    width: 25%;
+    border-radius: 20px;
+}
+
+#drink4 img{
+    width: 100%;
+}
+
+#drink4 p{
+    text-align: center;
+}
+
+/* bottom part */
+
+#bottom{
+    width:95%;
+    background-image: url("/A2assignment/images/9384a01f-78ec-41bd-b336-3406d45b4f26.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;    
+    border-radius: 10px;
+
+
+    display: flex;
+}
+
+#leftimg{
+    width: 25%;
+}
+
+#leftimg img{
+    border-radius: 10px;
+}
+
+#bottomtxt{
+    margin-left:7%;
+}
+
+#bottomtxt #p1{
+    color: orange;
+}
+
+#bottomtxt h3,
+#bottomtxt #p2,
+#bottomtxt #p3
+{
+    color: white;
+}
+
+#bottomtxt button{
+    color: orange;
+    width: 40%;
+    height: 50px;
+    font-size: 15px;
+    border-radius: 50px;
+    border-color: orange;
+    background-color: transparent;
+}
+
+#end{
+
+    padding: 2%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+}
+
+#end p{
+    color: white;
+    font-size: 15px;
+}
+
+#endtxt .dot{
+    color: orange;
+}
+
+#endtxt{
+   display: flex;
+   align-items: center;
+   gap: 20px;
+   margin-left: 27%;
+}
+
+#endright{
+    margin-left: 20%;
+    display: flex;
+
+}
+
+
+#icons{
+    display: flex;
+    gap: 20px;
+}
+
+#icons i{
+    margin-left: 10px;
+    color: orange;
+    font-size: 20px;
+}
