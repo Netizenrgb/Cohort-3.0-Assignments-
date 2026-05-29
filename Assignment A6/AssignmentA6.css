@@ -1197,7 +1197,7 @@ footer {
   justify-content: center;
   align-items: flex-start;
   padding-top: 30px;
-  background-image: url("/Assignment A6/images/lastimg.png");
+  background-image: url("./images/lastimg.png");
   background-position: bottom center;
   background-repeat: repeat-x;
   background-size: contain;
