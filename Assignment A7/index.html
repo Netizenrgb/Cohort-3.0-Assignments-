@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <button id="themeBtn">🌙 Dark Mode</button>
+
+      <section id="taskForm">
+        <h1 class="title">Task Manager</h1>
+        <p class="subtitle">Manage your daily tasks easily</p>
+
+        <label>Task Title</label>
+        <input type="text" id="taskInput" placeholder="Enter task title" />
+
+        <label>Category</label>
+
+        <select id="category">
+          <option>Select Category</option>
+          <option>Work</option>
+          <option>Personal</option>
+          <option>Just do it</option>
+        </select>
+
+        <button id="addBtn">Add Task</button>
+      </section>
+
+      <section id="taskList"></section>
+
+      <button id="clearBtn">Clear All Tasks</button>
+
+      <section id="event-demo">
+        <h2>Event Propagation Demo</h2>
+
+        <div id="grandparent">
+          Grandparent
+
+          <div id="parent">
+            Parent
+
+            <button id="child">Click Me</button>
+          </div>
+        </div>
+
+        <p class="info">Open console and click the button</p>
+      </section>
+
+      <section id="browser-pipeline">
+        <h2>Browser Rendering Pipeline</h2>
+
+        <div class="pipeline">
+          <div class="step">
+            <h3>HTML</h3>
+            <p>Browser receives HTML</p>
+          </div>
+
+          <div class="arrow">↓</div>
+
+          <div class="step">
+            <h3>Parsing</h3>
+            <p>Reads document structure</p>
+          </div>
+
+          <div class="arrow">↓</div>
+
+          <div class="step">
+            <h3>Tokenization</h3>
+            <p>Converts content into tokens</p>
+          </div>
+
+          <div class="arrow">↓</div>
+
+          <div class="step">
+            <h3>DOM Tree</h3>
+            <p>DOM gets created</p>
+          </div>
+
+          <div class="arrow">↓</div>
+
+          <div class="step">
+            <h3>CSSOM Tree</h3>
+            <p>CSS rules are processed</p>
+          </div>
+
+          <div class="arrow">↓</div>
+
+          <div class="step merge">
+            <h3>Render Tree</h3>
+            <p>DOM + CSSOM combined</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
