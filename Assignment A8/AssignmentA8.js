@@ -36,8 +36,7 @@ const saveSettingsBtn = document.getElementById("saveSettings");
 
 let editingTransactionId = null;
 
-//   AUTHENTICATION  REGISTER / LOGIN / LOGOUT
-
+//REGISTER / LOGIN / LOGOUT
 function showLogin() {
   regDiv.style.display = "none";
   loginDiv.style.display = "flex";
@@ -128,7 +127,17 @@ function logout() {
   localStorage.removeItem("currentlogeduser");
   dashboardCont.classList.add("dashboardhidden");
   document.getElementById("authContainer").style.display = "flex";
-  showLogin();
+  showAuthScreen();
+}
+
+
+function showAuthScreen() {
+  const users = getRegisteredUsers();
+  if (users.length === 0) {
+    showRegister();
+  } else {
+    showLogin();
+  }
 }
 
 function enterDashboard() {
@@ -143,7 +152,7 @@ registerBtn.addEventListener("click", registration);
 loginBtn.addEventListener("click", login);
 logoutBtn.addEventListener("click", logout);
 
-//SIDEBAR NAVIGATION — Dashboard <-> Settings
+// SIDEBAR NAVIGATION — Dashboard , Settings
 
 function showDashboardPage() {
   dashboardPage.classList.remove("hidden");
@@ -167,7 +176,6 @@ document
   .getElementById("settingsbtn")
   .addEventListener("click", showSettingsPage);
 
-//  4. TRANSACTION MODAL
 
 function openAddModal() {
   editingTransactionId = null;
@@ -208,7 +216,7 @@ modalOverlay.addEventListener("click", (e) => {
   if (e.target === modalOverlay) closeModal();
 });
 
-//  TRANSACTION DATA
+// TRANSACTION DATA — storage helpers + CRUD
 
 function currentUsername() {
   return localStorage.getItem("currentlogeduser");
@@ -294,6 +302,7 @@ function editTransaction(id) {
 
 saveTransactionBtn.addEventListener("click", saveTransaction);
 
+
 transactionBody.addEventListener("click", (e) => {
   const editBtn = e.target.closest(".editbtn");
   const deleteBtn = e.target.closest(".deletebtn");
@@ -302,7 +311,7 @@ transactionBody.addEventListener("click", (e) => {
   if (deleteBtn) deleteTransaction(Number(deleteBtn.dataset.id));
 });
 
-// RENDERING
+// RENDERING — table, overview stats, chart
 
 function getUserCurrency() {
   const users = getRegisteredUsers();
@@ -397,10 +406,10 @@ function renderChart(transactions) {
     .filter((t) => t.transactiontype === "Expense")
     .reduce((sum, t) => sum + Number(t.transactionamt), 0);
 
-  const styles = getComputedStyle(document.body);
-  const emerald = styles.getPropertyValue("--emerald").trim() || "#1f7a5c";
-  const rust = styles.getPropertyValue("--rust").trim() || "#b5533c";
-  const inkFaint = styles.getPropertyValue("--ink-faint").trim() || "#8b978d";
+  const isDark = document.body.classList.contains("theme-dark");
+  const emerald = "#1f7a5c";
+  const rust = "#b5533c";
+  const inkFaint = isDark ? "#6b756f" : "#8b978d";
 
   if (income === 0 && expense === 0) {
     ctx.fillStyle = inkFaint;
@@ -446,9 +455,8 @@ function drawBar(ctx, x, baseline, barWidth, barHeight, color, label, value) {
   ctx.roundRect(x, y, barWidth, barHeight, [6, 6, 0, 0]);
   ctx.fill();
 
-  ctx.fillStyle =
-    getComputedStyle(document.body).getPropertyValue("--ink").trim() ||
-    "#16241d";
+  const isDark = document.body.classList.contains("theme-dark");
+  ctx.fillStyle = isDark ? "#e7ece7" : "#16241d";
   ctx.font = "600 12px Inter, sans-serif";
   ctx.textAlign = "center";
   ctx.fillText(label, x + barWidth / 2, baseline + 20);
@@ -541,7 +549,7 @@ function saveSettings() {
 
 saveSettingsBtn.addEventListener("click", saveSettings);
 
-//  9. THEME (dark mode) + RESET DATA
+// THEME
 
 function applyTheme(theme) {
   document.body.classList.toggle("theme-dark", theme === "dark");
@@ -556,25 +564,37 @@ function toggleTheme() {
 changeThemeBtn.addEventListener("click", toggleTheme);
 
 function clearAllData() {
-  if (!confirm("This will permanently delete all your transactions. Continue?"))
+  if (
+    !confirm(
+      "This will permanently delete all your transaction data. Continue?",
+    )
+  )
     return;
-  saveTransactionsList([]);
+
+  localStorage.removeItem(transactionsKey());
   refreshDashboardData();
 }
 
 clearAllDataBtn.addEventListener("click", clearAllData);
 
+
 window.addEventListener("load", () => {
   applyTheme(localStorage.getItem("theme") === "dark" ? "dark" : "light");
 
-  const user = currentUsername();
+  const sessionUsername = currentUsername();
+  const users = getRegisteredUsers();
+  const sessionUserStillRegistered =
+    sessionUsername && users.some((u) => u.username === sessionUsername);
 
-  if (user) {
+  if (sessionUserStillRegistered) {
     enterDashboard();
   } else {
+    if (sessionUsername) {
+      localStorage.removeItem("currentlogeduser");
+    }
     document.getElementById("authContainer").style.display = "flex";
     dashboardCont.classList.add("dashboardhidden");
-    showLogin();
+    showAuthScreen();
   }
 });
 
