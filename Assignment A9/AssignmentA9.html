@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="AssignmentA9.css" />
+    <title>Daybook — Daily Dashboard</title>
+  </head>
+  <body>
+    <div class="glow" aria-hidden="true"></div>
+
+    <main>
+      <!-- top bar: datetime / weather / theme -->
+      <header class="topbar">
+        <!-- datetime -->
+        <div id="datetimecont" class="hero">
+          <p class="eyebrow">Today</p>
+          <h1 id="heroheading">Good <span id="herogreeting">Morning</span></h1>
+          <div class="hero-meta">
+            <p id="time">12:00 AM</p>
+            <span class="dot">·</span>
+            <p id="date">Mon, Jan 1</p>
+          </div>
+        </div>
+
+        <!-- weather -->
+        <div id="weathercont" class="weather-chip">
+          <div id="weathericon">☀️</div>
+          <div id="weatherinfo">
+            <p id="weathertemp">--°C</p>
+            <p id="weatherplace">Loading...</p>
+          </div>
+        </div>
+
+        <!-- theme -->
+        <div id="themecont">
+          <button id="themebtn" aria-label="Toggle theme">
+            <span id="sunicon">☀️</span>
+            <span id="moonicon">🌙</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- bento grid -->
+      <section class="grid">
+        <!-- todo list -->
+        <div id="todocont" class="panel panel--tall">
+          <div class="panel-head">
+            <span class="panel-icon">✓</span>
+            <h3>To&#8209;Do List</h3>
+          </div>
+
+          <div id="todoinputdiv" class="panel-form">
+            <input id="todoinput" placeholder="Add a task…" />
+            <button id="addtodo">Add Task</button>
+          </div>
+
+          <div id="tododisplay" class="panel-list"></div>
+        </div>
+
+        <!-- Daily Planner -->
+        <div id="plannercont" class="panel panel--tall">
+          <div class="panel-head">
+            <span class="panel-icon">◔</span>
+            <h3>Daily Planner</h3>
+          </div>
+
+          <div id="plannerinputdiv" class="panel-form">
+            <div class="field-row">
+              <div class="field">
+                <label for="timepicker">Time</label>
+                <input type="time" id="timepicker" />
+              </div>
+              <div class="field field--grow">
+                <label for="plannerinput">Task</label>
+                <input
+                  type="text"
+                  id="plannerinput"
+                  placeholder="Enter plan…"
+                />
+              </div>
+            </div>
+
+            <div class="btn-row">
+              <button id="saveplanner">Save</button>
+              <button id="clearplanner" class="ghost">Clear All</button>
+            </div>
+          </div>
+
+          <div id="displayplanner" class="panel-list"></div>
+        </div>
+
+        <!-- daily goal -->
+        <div id="dailygoalcont" class="panel">
+          <div class="panel-head">
+            <span class="panel-icon">◈</span>
+            <h3>Daily Goals</h3>
+          </div>
+
+          <div id="dailygoalinput" class="panel-form">
+            <input
+              type="text"
+              id="dailygoaltext"
+              placeholder="Enter daily goal…"
+            />
+            <div class="btn-row">
+              <button id="adddailygoal">Add Goal</button>
+              <button id="cleardailygoals" class="ghost">Clear All</button>
+            </div>
+          </div>
+
+          <div id="dailygoalprogress">
+            <p id="goalprogress">0 of 0 Completed</p>
+          </div>
+
+          <div id="dailygoallist" class="panel-list"></div>
+        </div>
+
+        <!-- timer -->
+        <div id="pomodorocont" class="panel">
+          <div class="panel-head">
+            <span class="panel-icon">◷</span>
+            <h2>Pomodoro Timer</h2>
+          </div>
+
+          <div id="timerdisplay">25:00</div>
+
+          <div id="timerbuttons">
+            <button id="starttimer">Start</button>
+            <button id="pausetimer" class="ghost">Pause</button>
+            <button id="resettimer" class="ghost">Reset</button>
+          </div>
+        </div>
+
+        <!-- quote -->
+        <div id="quotecont" class="panel">
+          <div class="panel-head">
+            <span class="panel-icon">❝</span>
+            <h2>Daily Motivation</h2>
+          </div>
+
+          <p id="quote">Loading Quote...</p>
+          <p id="author"></p>
+
+          <button id="newquote" class="ghost">New Quote</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="AssignmentA9.js"></script>
+  </body>
+</html>
