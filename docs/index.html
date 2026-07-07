@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FinTrack Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <!--  AUTHENTICATION  -->
+      <div class="container" id="authContainer">
+        <div id="registrationdiv" class="auth-box">
+          <h3>Create account</h3>
+
+          <label for="reginput">Username</label>
+          <input type="text" id="reginput" placeholder="Enter username" />
+
+          <label for="regpass">Passcode</label>
+          <input type="password" id="regpass" placeholder="Enter passcode" />
+
+          <button id="register">Register</button>
+
+          <p>Already have an account? <a href="#" class="toLogin">Login</a></p>
+        </div>
+
+        <div id="logindiv" class="auth-box">
+          <h3>Welcome back</h3>
+
+          <label for="logininput">Username</label>
+          <input type="text" id="logininput" placeholder="Enter username" />
+
+          <label for="loginpass">Passcode</label>
+          <input type="password" id="loginpass" placeholder="Enter passcode" />
+
+          <button id="login">Login</button>
+
+          <p>
+            Don't have an account? <a href="#" class="toRegister">Register</a>
+          </p>
+        </div>
+      </div>
+
+      <!--DASHBOARD-->
+      <div id="dashboardcont" class="dashboardhidden">
+        <aside id="side">
+          <p class="brand">FinTrack Pro<br /><span>Enterprise Finance</span></p>
+
+          <nav id="sidenav">
+            <div id="dashboard" class="navitem active">
+              <h3 id="dashboardbtn">
+                <span class="navmark">01</span> Dashboard
+              </h3>
+            </div>
+            <div id="settings" class="navitem">
+              <h3 id="settingsbtn"><span class="navmark">02</span> Settings</h3>
+            </div>
+          </nav>
+
+          <button id="addtransactionbtn">+ Add transaction</button>
+        </aside>
+
+        <div id="mainpanel">
+          <!-- ---------- Dashboard page ---------- -->
+          <section id="dashboardPage" class="page">
+            <div id="logout-name">
+              <h3 id="loggedInName">name</h3>
+              <button id="logout">Logout</button>
+            </div>
+
+            <div id="overview">
+              <h3>Financial overview</h3>
+              <p>Real-time tracking, ledger style.</p>
+
+              <div class="card card-balance">
+                <span class="card-label">Current balance</span>
+                <span class="card-value" id="statBalance">$0</span>
+              </div>
+              <div class="card card-income">
+                <span class="card-label">Total income</span>
+                <span class="card-value" id="statIncome">$0</span>
+              </div>
+              <div class="card card-expense">
+                <span class="card-label">Total expense</span>
+                <span class="card-value" id="statExpense">$0</span>
+              </div>
+              <div class="card card-count">
+                <span class="card-label">Total transactions</span>
+                <span class="card-value" id="statCount">0</span>
+              </div>
+            </div>
+
+            <div id="chart-theme">
+              <div id="graph">
+                <canvas id="graphCanvas"></canvas>
+              </div>
+              <div id="theme">
+                <h4>Preferences</h4>
+                <p>Dark mode</p>
+                <button id="changetheme">Switch theme</button>
+                <hr />
+                <button id="clearalldata">Reset data</button>
+              </div>
+            </div>
+
+            <div id="displayalltransactiondiv">
+              <h4>All transactions</h4>
+
+              <input
+                id="searchtransactions"
+                type="text"
+                placeholder="Search transactions"
+              />
+
+              <select id="searchtransactioncategory">
+                <option value="All">All transactions</option>
+                <option value="Income">Income</option>
+                <option value="Expense">Expense</option>
+              </select>
+
+              <table id="transactiontable">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+
+                <tbody id="transactionbody"></tbody>
+              </table>
+              <p id="emptyState" class="empty-state hidden">
+                No transactions yet — add your first one above.
+              </p>
+            </div>
+          </section>
+
+          <!-- ---------- Settings page ---------- -->
+          <section id="settingsPage" class="page hidden">
+            <h1>Settings</h1>
+            <p>Manage your account profile and app formatting.</p>
+
+            <div class="settings-card">
+              <h2>Profile details</h2>
+
+              <div class="row">
+                <div class="input-group">
+                  <label for="settingsName">Full name</label>
+                  <input type="text" id="settingsName" />
+                </div>
+
+                <div class="input-group">
+                  <label for="settingsCurrency">Primary currency</label>
+                  <select id="settingsCurrency">
+                    <option value="$">USD ($)</option>
+                    <option value="€">EUR (€)</option>
+                    <option value="£">GBP (£)</option>
+                    <option value="₹">INR (₹)</option>
+                    <option value="¥">JPY (¥)</option>
+                  </select>
+                </div>
+              </div>
+
+              <button id="saveSettings">Save changes</button>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div id="modalOverlay" class="modal-overlay hidden">
+        <div id="transactioninputdiv" class="modal">
+          <div class="modal-header">
+            <h3 id="modalTitle">Add transaction</h3>
+            <span id="close">&times;</span>
+          </div>
+
+          <label for="transactiontype">Type</label>
+          <select id="transactiontype">
+            <option>Income</option>
+            <option>Expense</option>
+          </select>
+
+          <label for="transactiondesc">Description</label>
+          <input
+            type="text"
+            id="transactiondesc"
+            placeholder="e.g. Amazon Salary"
+          />
+
+          <label for="transactionamt">Amount</label>
+          <input type="number" id="transactionamt" />
+
+          <label for="transactiondate">Date</label>
+          <input type="date" id="transactiondate" />
+
+          <label for="transactioncategory">Category</label>
+          <select id="transactioncategory">
+            <option>Select Category</option>
+            <option>Amazon</option>
+            <option>Salary</option>
+            <option>Shopping</option>
+          </select>
+
+          <button id="savetransaction">Save transaction</button>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
